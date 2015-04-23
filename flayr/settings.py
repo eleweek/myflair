@@ -30,7 +30,7 @@ REDDIT_APP_ID = os.environ['REDDIT_APP_ID']
 REDDIT_APP_SECRET = os.environ['REDDIT_APP_SECRET']
 REDDIT_AUTH_REDIRECT_URI = 'http://127.0.0.1:8000/authorize_callback'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
