@@ -26,6 +26,10 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 assert os.environ['DJANGO_DEBUG'] in ['true', 'false']
 DEBUG = os.environ['DJANGO_DEBUG'] == "true"
 
+REDDIT_APP_ID = os.environ['REDDIT_APP_ID']
+REDDIT_APP_SECRET = os.environ['REDDIT_APP_SECRET']
+REDDIT_AUTH_REDIRECT_URI = 'http://127.0.0.1:8000/authorize_callback'
+
 ALLOWED_HOSTS = []
 
 
