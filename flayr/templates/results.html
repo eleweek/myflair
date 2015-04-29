@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="col-xs-6 col-xs-offset-3 centered">
+    <div class="progress">
+      <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" id="flair-progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%; min-width: 5em;">
+        Getting list of subreddits
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="col-xs-6 col-xs-offset-3 centered">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" value="checked" id="hide-empty-flairs"> Hide subreddits with empty flairs
+      </label>
+    </div>
+   <table class="table" id="flayr-table">
+      <thead>
+        <tr>
+          <th>Subreddit</th>
+          <th>Flair </th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
+
+{% load staticfiles %}
+
+{% block bootstrap3_extra_script %}
+  {{ block.super }}
+  <script src="{% static 'results.js' %}"></script>
+{% endblock %}
