@@ -29,6 +29,7 @@ DEBUG = os.environ['DJANGO_DEBUG'] == "true"
 REDDIT_APP_ID = os.environ['REDDIT_APP_ID']
 REDDIT_APP_SECRET = os.environ['REDDIT_APP_SECRET']
 REDDIT_AUTH_REDIRECT_URI = 'http://127.0.0.1:8000/authorize_callback'
+REDDIT_USER_AGENT = os.environ['REDDIT_USER_AGENT']
 
 ALLOWED_HOSTS = ['*']
 

@@ -11,7 +11,7 @@ class IndexView(TemplateView):
 
 
 def init_praw(access_credentials=None):
-    r = praw.Reddit('Doing oauth testing by /u/godlikesme')
+    r = praw.Reddit(settings.REDDIT_USER_AGENT)
     r.set_oauth_app_info(settings.REDDIT_APP_ID, settings.REDDIT_APP_SECRET, settings.REDDIT_AUTH_REDIRECT_URI)
     if access_credentials:
         r.set_access_credentials(**access_credentials)
