@@ -6,7 +6,7 @@ from .views import IndexView, AuthView, AuthCallbackView, ResultsView, GetFlairV
 
 urlpatterns = [
     # Examples:
-    # url(r'^$', 'flayr.views.home', name='home'),
+    # url(r'^$', 'myflair.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),

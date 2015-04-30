@@ -17,32 +17,42 @@ $( document ).ready(function() {
 
     console.log( "ready!" );
     get_my_subreddits().done(function(data){
+        if (data.login_again) {
+            $('#login-again-btn').show();
+            return;
+        }
         subreddits = data.subreddits;
         subreddits_num = subreddits.length;
         $("#flair-progressbar").removeClass("progress-bar-info");
+        update_progress();
         get_all_flairs();
     }).fail(function() {
         setTimeout(get_my_subreddits, 3000);
     });
 
-    var update_progressbar = function() {
+    var update_progress = function() {
         processed_subreddits = subreddits_num - subreddits.length;
         completed_percentage = processed_subreddits / subreddits_num * 100;
         $("#flair-progressbar")
             .attr('aria-valuenow', completed_percentage)
             .width(completed_percentage + "%")
             .html(processed_subreddits + " / " + subreddits_num);
+        window.document.title = "myflair: " + processed_subreddits + " / " + subreddits_num;
     };
 
     var get_all_flairs = function() {
         get_flair(subreddits[0]).done(function(data) {
+            if (data.login_again) {
+                $('#login-again-btn').removeClass("hidden");
+                return;
+            }
             subreddit = data.subreddit;
             flair = data.flair;
             tr_class = flair ? "nonempty-flair" : "empty-flair";
             $("#flayr-table").append("<tr class=" + tr_class + "><td>" + subreddit + "</td><td>" + (flair || "[no flair]") + "</td></tr>");
             update_rows_visibility();
             subreddits.shift();
-            update_progressbar();
+            update_progress();
 
             if (subreddits.length) {
                 get_all_flairs();

@@ -51,14 +51,20 @@ def AuthCallbackView(request):
 
 
 def GetFlairView(request, subreddit):
-    r = init_praw(deserialize_reddit_access_information(request.COOKIES.get('ai', '')))
+    try:
+        r = init_praw(deserialize_reddit_access_information(request.COOKIES.get('ai', '')))
+    except:
+        return HttpResponse(json.dumps({"login_again": True}), content_type='application/json')
     flair_text = r.get_flair_choices(subreddit)['current']['flair_text']
 
     return HttpResponse(json.dumps({"subreddit": subreddit, "flair": flair_text if flair_text else None}), content_type='application/json')
 
 
 def GetMySubredditsView(request):
-    r = init_praw(deserialize_reddit_access_information(request.COOKIES.get('ai', '')))
+    try:
+        r = init_praw(deserialize_reddit_access_information(request.COOKIES.get('ai', '')))
+    except:
+        return HttpResponse(json.dumps({"login_again": True}), content_type='application/json')
     subreddits = [sr.url[3:][:-1] for sr in r.get_my_subreddits(limit=1000)]
     return HttpResponse(json.dumps({"subreddits": subreddits}), content_type='application/json')
 

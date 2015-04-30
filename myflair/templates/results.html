@@ -2,6 +2,7 @@
 
 {% block content %}
   <div class="col-xs-6 col-xs-offset-3 centered">
+    <a href="{% url 'auth' %}" class="btn btn-lg btn-danger hidden" id="login-again-btn" style="margin-bottom: 2em;"> You need to login again :( Click here </a>
     <div class="progress">
       <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" id="flair-progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%; min-width: 5em;">
         Getting list of subreddits
