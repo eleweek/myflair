@@ -1,1 +1,1 @@
-web: gunicorn flayr.wsgi --log-file -
+web: gunicorn myflair.wsgi --log-file -

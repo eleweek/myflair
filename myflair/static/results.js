@@ -49,7 +49,7 @@ $( document ).ready(function() {
             subreddit = data.subreddit;
             flair = data.flair;
             tr_class = flair ? "nonempty-flair" : "empty-flair";
-            $("#flayr-table").append("<tr class=" + tr_class + "><td>" + subreddit + "</td><td>" + (flair || "[no flair]") + "</td></tr>");
+            $("#myflair-table").append("<tr class=" + tr_class + "><td>" + subreddit + "</td><td>" + (flair || "[no flair]") + "</td></tr>");
             update_rows_visibility();
             subreddits.shift();
             update_progress();
