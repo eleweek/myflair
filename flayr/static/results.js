@@ -1,11 +1,11 @@
 $( document ).ready(function() {
     var get_flair = function(subreddit_name) {
         return $.ajax("/_get_flair/" + subreddit_name);
-    }
+    };
 
     var get_my_subreddits = function(subreddit_name) {
         return $.ajax("/_get_my_subreddits");
-    }
+    };
     
     var update_rows_visibility = function() {
         if($("#hide-empty-flairs").is(":checked")) {
@@ -13,13 +13,11 @@ $( document ).ready(function() {
         } else {
             $(".empty-flair").show();
         }
-    }
+    };
 
     console.log( "ready!" );
-    var subreddits = undefined;
-    var subreddits_num = undefined;
     get_my_subreddits().done(function(data){
-        subreddits = data['subreddits'];
+        subreddits = data.subreddits;
         subreddits_num = subreddits.length;
         $("#flair-progressbar").removeClass("progress-bar-info");
         get_all_flairs();
@@ -33,13 +31,13 @@ $( document ).ready(function() {
         $("#flair-progressbar")
             .attr('aria-valuenow', completed_percentage)
             .width(completed_percentage + "%")
-            .html(processed_subreddits + " / " + subreddits_num)
+            .html(processed_subreddits + " / " + subreddits_num);
     };
 
     var get_all_flairs = function() {
         get_flair(subreddits[0]).done(function(data) {
-            subreddit = data['subreddit'];
-            flair = data['flair'];
+            subreddit = data.subreddit;
+            flair = data.flair;
             tr_class = flair ? "nonempty-flair" : "empty-flair";
             $("#flayr-table").append("<tr class=" + tr_class + "><td>" + subreddit + "</td><td>" + (flair || "[no flair]") + "</td></tr>");
             update_rows_visibility();
